@@ -1,27 +1,28 @@
-const isCorrectLength = function (string, maxLength) {
-  return string.length <= maxLength;
-};
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-const isPalindrome = function (string) {
+const checkForPalindrome = (string) => {
   const normalizeString = string.replaceAll(' ', '').toLowerCase();
-  let reversedString = '';
+  let index = normalizeString.length - 1;
 
-  for (let i = normalizeString.length - 1; i >= 0; i--) {
-    reversedString += normalizeString[i];
+  for(const char of normalizeString) {
+    if(char !== normalizeString[index]) {
+      return false;
+    }
+    index--;
   }
 
-  return normalizeString === reversedString;
+  return true;
 };
 
-const getNumbers = function (argument) {
+const parseNumbers = (argument) => {
   const string = Number.isFinite(argument) ? argument.toString() : argument;
   let numbers = '';
 
-  for (let i = 0; i < string.length; i++) {
-    const number = parseInt(string[i]);
+  for(const char of string) {
+    const number = parseInt(char);
 
     if (!Number.isNaN(number)) {
-      numbers += string[i];
+      numbers += char;
     }
   }
 
