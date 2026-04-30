@@ -1,6 +1,7 @@
-const timeToMinutes = (timeString) => timeString.split(':')
-  .map((item, index) => parseInt(index === 0 ? item * 60 : item))
-  .reduce((total, current) => total + current);
+const timeToMinutes = (timeString) => {
+  const [hours, minutes] = timeString.split(':').map(Number);
+  return hours * 60 + minutes;
+};
 
 const checkForMeetWithinWorkday = (dayStart, dayEnd, meetingStart, meetingDuration) => {
   const start = timeToMinutes(dayStart);
